@@ -2,6 +2,7 @@
 //  	VolumeSlider.m
 //  	Volume Slider Cordova Plugin
 //
+//      Updated by Tom Krones 30/09/13.
 //  	Created by Tommy-Carlos Williams on 20/07/11.
 //  	Copyright 2011 Tommy-Carlos Williams. All rights reserved.
 //      MIT Licensed
@@ -35,10 +36,10 @@
 #pragma mark -
 #pragma mark VolumeSlider
 
-- (void) createVolumeSlider:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options
-{	
+- (void) createVolumeSlider:(CDVInvokedUrlCommand*)command
+{
 	self.callbackId = arguments.pop;
-	NSUInteger argc = [arguments count];
+	NSUInteger argc = [command.arguments count];
 	
 	if (argc < 3) { // at a minimum we need x origin, y origin and width...
 		return;	
@@ -47,11 +48,11 @@
 	CGFloat originx,originy,width;
 	CGFloat height = 30;
 	
-	originx = [[arguments objectAtIndex:0] floatValue];
-	originy = [[arguments objectAtIndex:1] floatValue];
-	width = [[arguments objectAtIndex:2] floatValue];
+	originx = [[command.arguments objectAtIndex:0] floatValue];
+	originy = [[command.arguments objectAtIndex:1] floatValue];
+	width = [[command.arguments objectAtIndex:2] floatValue];
 	if (argc < 4) {
-		height = [[arguments objectAtIndex:3] floatValue];
+		height = [[command.arguments objectAtIndex:3] floatValue];
 	}
 	
 	CGRect viewRect = CGRectMake(
@@ -70,13 +71,13 @@
 	self.myVolumeView.showsVolumeSlider = NO;
 }
 
-- (void)showVolumeSlider:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options
+- (void) showVolumeSlider:(CDVInvokedUrlCommand*)command
 {
 	self.myVolumeView.showsVolumeSlider = YES;
 	self.mpVolumeViewParentView.hidden = NO;
 }
 
-- (void)hideVolumeSlider:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options
+- (void) hideVolumeSlider:(CDVInvokedUrlCommand*)command
 {
 	self.mpVolumeViewParentView.hidden = YES;
 	self.myVolumeView.showsVolumeSlider = NO;

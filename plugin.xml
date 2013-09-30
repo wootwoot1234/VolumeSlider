@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+           id="com.adobe.plugins.VolumeSlider"
+      version="3.0.0">
+    <name>VolumeSlider</name>
+    <description>PhoneGap / Cordova iOS plugin that allows you to add a native volume slider (MPVolumeView) to your app.</description>
+    <license>MIT</license>
+    <keywords>cordova,phonegap,volume,slider</keywords>
+    
+    <js-module src="www/VolumeSlider.js" name="VolumeSlider">
+        <clobbers target="plugins.volumeSlider" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+    </platform>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="VolumeSlider">
+                <param name="ios-package" value="VolumeSlider"/>
+                <param name="onload" value="true"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/ios/VolumeSlider.m" />
+        
+        <header-file src="src/ios/VolumeSlider.h" />
+    </platform>
+    
+</plugin>

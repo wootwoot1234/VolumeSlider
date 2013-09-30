@@ -21,7 +21,6 @@
         <config-file target="config.xml" parent="/*">
             <feature name="VolumeSlider">
                 <param name="ios-package" value="VolumeSlider"/>
-                <param name="onload" value="true"/>
             </feature>
         </config-file>
 

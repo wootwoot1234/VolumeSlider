@@ -26,10 +26,7 @@
 }
 
 - (void)dealloc
-{	
-	[mpVolumeViewParentView release];
-	[myVolumeView release];
-    [super dealloc];
+{
 }
 
 
@@ -38,7 +35,7 @@
 
 - (void) createVolumeSlider:(CDVInvokedUrlCommand*)command
 {
-	self.callbackId = arguments.pop;
+	//self.callbackId = command.arguments.pop;
 	NSUInteger argc = [command.arguments count];
 	
 	if (argc < 3) { // at a minimum we need x origin, y origin and width...
@@ -61,7 +58,7 @@
 								 width, 
 								 height
 								 );
-	self.mpVolumeViewParentView = [[[UIView alloc] initWithFrame:viewRect] autorelease];
+	self.mpVolumeViewParentView = [[UIView alloc] initWithFrame:viewRect];
 	[self.webView.superview addSubview:mpVolumeViewParentView];
 	
 	mpVolumeViewParentView.backgroundColor = [UIColor clearColor];
